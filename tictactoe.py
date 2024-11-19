@@ -1,6 +1,7 @@
 import sys
 from minimax import MiniMax
 import pygame
+import time
 
 EMPTY = 0
 X = 1
@@ -203,7 +204,11 @@ class TicTacToe:
 
 				if not self.game_over and not self.user_turn:
 					# AI turn
+					start_time = time.time()
 					move = self.minimax.solve(self.map)
+					end_time = time.time()
+					timelapse = end_time - start_time
+					print(f"Found solution in {timelapse:.4f} seconds")
 					self.map[move] = X
 					self.user_turn = True
 
