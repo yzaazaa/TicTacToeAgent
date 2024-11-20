@@ -128,7 +128,6 @@ class TicTacToe:
 			status = "Tie" if self.winner is None else f"{self.winner_symbol} Wins!"
 		else:
 			status = "Your Turn" if self.user_turn else "Computer's Turn"
-		
 		text = self.medium_font.render(status, True, WHITE)
 		text_rect = text.get_rect(center=(self.width/2,50))
 		self.screen.blit(text, text_rect)
@@ -214,9 +213,9 @@ class TicTacToe:
 
 					# Check game state after computer move
 					if self.terminal(self.map):
-						win = self.checkWin(self.map)
+						self.winner = self.checkWin(self.map)
 						self.game_over = True
-						self.winner_symbol = "X" if win == X else "O"
+						self.winner_symbol = "X" if self.winner == X else "O"
 				
 				elif event.type == pygame.MOUSEBUTTONDOWN and self.user_turn and not self.game_over:
 					# User turn
